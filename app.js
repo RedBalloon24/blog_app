@@ -21,4 +21,4 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use("/", indexRoutes);
 app.use("/blogs", blogRoutes);
 
-app.listen(process.env.PORT || 3000, () => console.log("YelpCamp has started"))
+app.listen(process.env.PORT || 3000, () => console.log("Blog_App has started"))
