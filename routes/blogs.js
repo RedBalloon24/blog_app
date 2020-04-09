@@ -63,7 +63,7 @@ router.put("/:id", (req, res) => {
     })
 })
 
-router.put("/:id", (req, res) => {
+router.delete("/:id", (req, res) => {
     Blog.findByIdAndRemove(req.params.id, (err) => {
         if(err){
             res.redirect("/blogs")

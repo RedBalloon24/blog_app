@@ -1,3 +1,4 @@
+
 i.icon {
     font-size: 2em;
 }
@@ -8,4 +9,13 @@ i.icon {
 
 #delete {
     display: inline;
+}
+
+.time {
+    margin-top: 2%; 
+    margin-bottom: 3%;
+}
+
+.blog-text {
+    margin-bottom: 3%;
 }
