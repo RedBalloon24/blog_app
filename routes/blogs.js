@@ -17,14 +17,27 @@ router.get("/new", (req, res) => {
     res.render("new")
 })
 
-router.get("/", (req, res) => {
-    Blog.creaet(req.body.blog, (err, newBlog) => {
+router.post("/", (req, res) => {
+    Blog.create(req.body.blog, (err, newBlog) => {
         if(err){
             res.render("new")
         } else {
+            console.log(newBlog)
             res.redirect("/blogs")
         }
-    })})
+    })
+})
+
+
+router.get("/:id", (req, res) => {
+    Blog.findById(req.params.id, (err, foundBlog) => {
+        if(err){
+            res.redirect("/blogs")
+        } else {
+            res.render("show", { blog: foundBlog })
+        }
+    })
+})
 
 
 module.exports = router;
