@@ -39,5 +39,35 @@ router.get("/:id", (req, res) => {
     })
 })
 
+router.get("/:id/edit", (req, res) => {
+    Blog.findById(req.params.id, (err, foundBlog) => {
+        if(err){
+            res.redirect("/")
+        } else {
+            res.render("edit", { blog: foundBlog })
+        }
+    })
+})
+
+router.put("/:id", (req, res) => {
+    Blog.findByIdAndUpdate(req.params.id, req.body.blog, (err, updatedBlog) => {
+        if(err){
+            res.redirect("/blogs")
+        } else {
+            res.redirect("/blogs/" + req.params.id)
+        }
+    })
+})
+
+router.put("/:id", (req, res) => {
+    Blog.findByIdAndRemove(req.params.id, (err) => {
+        if(err){
+            res.redirect("/blogs")
+        } else {
+            res.redirect("/blogs/")
+        }
+    })
+})
+
 
 module.exports = router;
