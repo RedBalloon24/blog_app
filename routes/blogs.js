@@ -18,6 +18,8 @@ router.get("/new", (req, res) => {
 })
 
 router.post("/", (req, res) => {
+    req.body.blog.body = req.sanitize(req.body.blog.body)
+
     Blog.create(req.body.blog, (err, newBlog) => {
         if(err){
             res.render("new")
@@ -50,6 +52,8 @@ router.get("/:id/edit", (req, res) => {
 })
 
 router.put("/:id", (req, res) => {
+    req.body.blog.body = req.sanitize(req.body.blog.body)
+
     Blog.findByIdAndUpdate(req.params.id, req.body.blog, (err, updatedBlog) => {
         if(err){
             res.redirect("/blogs")
